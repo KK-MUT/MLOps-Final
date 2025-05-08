@@ -1,0 +1,38 @@
+[build-system]
+requires = ["maturin>=0.13"]
+build-backend = "maturin"
+
+[project]
+name = "ARISA_DSML"
+version = "0.0.1"
+description = "Predicition of heart disease"
+authors = [
+  { name = "Wojciech" },
+]
+
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    
+]
+requires-python = "~=3.11"
+
+[tool.maturin]
+module-name = "arisa_dsml"
+
+[tool.black]
+line-length = 99
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.venv
+)/
+'''
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["E731", "E266", "E501", "C901", "N803", "FBT001", "FBT002", "N806", "E231", "E225", "E227", "W391", "E252", "E226"]
+[tool.ruff.lint.isort]
+known-first-party = ["ARISA_DSML"]
+force-sort-within-sections = true
