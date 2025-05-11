@@ -99,7 +99,7 @@ def train(
     X_train: pd.DataFrame,
     y_train: pd.DataFrame,
     params: dict | None,
-    artifact_name: str = "catboost_model_heart",
+    artifact_name: str = "catboost_model_diabetes",
     cv_results: pd.DataFrame | None = None,
 ) -> tuple[str | Path]:
     """Train model on full dataset without cross-validation."""

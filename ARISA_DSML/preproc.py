@@ -10,7 +10,7 @@ from ARISA_DSML.config import DATASET, PROCESSED_DATA_DIR, RAW_DATA_DIR, CSV_NAM
 
 
 def get_raw_data() -> None:
-    """Download and extract raw heart disease dataset from Kaggle."""
+    """Download and extract raw diabetes dataset from Kaggle."""
     dataset_name = DATASET
     download_folder = RAW_DATA_DIR
     download_folder.mkdir(parents=True, exist_ok=True)
