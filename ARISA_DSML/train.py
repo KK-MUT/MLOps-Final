@@ -22,7 +22,7 @@ from ARISA_DSML.config import (
 from ARISA_DSML.helpers import get_git_commit_hash
 
 # mlflow.set_tracking_uri("http://127.0.0.1:5000")
-# new line of code test
+# new line
 
 
 def run_hyperopt(X_train:pd.DataFrame, y_train:pd.DataFrame, test_size:float=0.25, n_trials:int=20, overwrite:bool=False)->str|Path:
