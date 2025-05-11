@@ -29,7 +29,7 @@ jobs:
         run: |
           mkdir -p $HOME/.config
           mkdir -p $HOME/.config/kaggle
-          echo "$KAGGLE_KEY" > $HOME/.config/kaggle/kaggle.json
+          echo "{\"username\":\"$KAGGLE_USERNAME\", \"key\":\"$KAGGLE_KEY\"}" > ~/.kaggle/kaggle.json
           chmod 600 $HOME/.config/kaggle/kaggle.json
       - name: Run preprocessing
         run: make preprocess
