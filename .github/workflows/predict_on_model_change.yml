@@ -28,7 +28,7 @@ jobs:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
         run: |
           mkdir -p $HOME/.kaggle
-          cat <<EOF > $HOME/.kaggle/kaggle.json
+          cat > $HOME/.kaggle/kaggle.json <<EOF
           {
             "username": "${KAGGLE_USERNAME}",
             "key": "${KAGGLE_KEY}"
