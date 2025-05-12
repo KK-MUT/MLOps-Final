@@ -5,6 +5,7 @@ from kaggle.api.kaggle_api_extended import KaggleApi
 from sklearn.model_selection import train_test_split
 from loguru import logger
 import pandas as pd
+import os
 
 from ARISA_DSML.config import DATASET, PROCESSED_DATA_DIR, RAW_DATA_DIR
 
@@ -14,7 +15,9 @@ def get_raw_data() -> None:
     dataset_name = DATASET
     download_folder = RAW_DATA_DIR
     download_folder.mkdir(parents=True, exist_ok=True)
-
+    
+    os.environ['KAGGLE_CONFIG_DIR'] = os.path.expanduser('~/.kaggle')
+   
     api = KaggleApi()
     api.authenticate()
 
