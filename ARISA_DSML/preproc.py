@@ -5,24 +5,27 @@ from kaggle.api.kaggle_api_extended import KaggleApi
 from sklearn.model_selection import train_test_split
 from loguru import logger
 import pandas as pd
+import os
 
-from ARISA_DSML.config import DATASET, PROCESSED_DATA_DIR, RAW_DATA_DIR, CSV_NAME
+from ARISA_DSML.config import DATASET, PROCESSED_DATA_DIR, RAW_DATA_DIR
 
 
 def get_raw_data() -> None:
-    """Download and extract raw diabetes dataset from Kaggle."""
+    """Download and extract raw heart disease dataset from Kaggle."""
     dataset_name = DATASET
     download_folder = RAW_DATA_DIR
     download_folder.mkdir(parents=True, exist_ok=True)
-
+    
+    os.environ['KAGGLE_CONFIG_DIR'] = os.path.expanduser('~/.kaggle')
+   
     api = KaggleApi()
     api.authenticate()
 
-    logger.info(f"Downloading dataset {dataset_name}")
-    api.dataset_download_files(DATASET, path=str(download_folder), unzip=True)
+    logger.info(f"Downloading dataset {dataset_name} to {download_folder}")
+    api.dataset_download_files("shahnawaj9/diabetes-database", path=str(download_folder), unzip=True)
 
     logger.info("Download complete.")
-    return RAW_DATA_DIR / CSV_NAME
+    return RAW_DATA_DIR / "diabetes.csv"
 
 
 def preprocess_df(file:str|Path) -> tuple[Path, Path]:
@@ -56,7 +59,7 @@ def preprocess_df(file:str|Path) -> tuple[Path, Path]:
     df_train.to_csv(train_path, index=False)
     df_test.to_csv(test_path, index=False)
 
-    logger.info("Train saved as train.csv, Test saved as test.csv")
+    logger.info(f"Train saved to {train_path}, Test saved to {test_path}")
 
     return train_path, test_path
 
@@ -66,6 +69,7 @@ if __name__ == "__main__":
     raw_csv = get_raw_data()
 
     logger.info(f"Preprocessing and splitting data from {raw_csv}")
+    df = pd.read_csv(raw_csv)
     train_path, test_path = preprocess_df(raw_csv)
 
     logger.info("Saving preprocessed data")
