@@ -167,7 +167,7 @@ mlflow ui
 - The implemented CI pipeline (GitHub Actions) automatically validates the configuration and runs tests after a change in the code.
 - Review by other team members is required before merging changes.
 ### ML model code quality
-- pre-commit hooks (flake8, ruff) have been implemented in the repository.
+- pre-commit hooks (flake8) have been implemented in the repository.
 - The ML code has been divided into modules and includes unit tests for:
     - data processing,
     - model training,
