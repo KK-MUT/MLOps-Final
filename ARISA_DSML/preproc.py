@@ -1,4 +1,4 @@
-"""Functions for preprocessing the data. """
+"""Functions for preprocessing the data."""
 
 from pathlib import Path
 from kaggle.api.kaggle_api_extended import KaggleApi
